@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPHYX - CRYPTIC DRIP TERMINAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="glitch-text" data-text="SEPHYX">SEPHYX</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active" data-page="home">HOME</a>
+                <a href="#collection" class="nav-link" data-page="collection">COLLECTION</a>
+                <a href="#drops" class="nav-link" data-page="drops">DROPS</a>
+                <a href="#ranks" class="nav-link" data-page="ranks">RANKS</a>
+                <a href="#contact" class="nav-link" data-page="contact">CONTACT</a>
+                <a href="#vault" class="nav-link vault-link" data-page="vault" style="display: none;">VAULT</a>
+            </div>
+            <div class="nav-actions">
+                <button class="wishlist-btn" id="wishlist-btn" title="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlist-count">0</span>
+                </button>
+                <button class="cart-btn" id="cart-btn" title="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="music-toggle" id="music-toggle" title="Music">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <div class="auth-section">
+                    <button class="auth-btn" id="auth-btn">LOGIN</button>
+                    <div class="user-info" id="user-info" style="display: none;">
+                        <span class="user-rank" id="user-rank"></span>
+                        <span class="user-name" id="user-name"></span>
+                        <button class="logout-btn" id="logout-btn">LOGOUT</button>
+                    </div>
+                </div>
+                <div class="admin-access">
+                    <a href="admin.html" class="admin-link" title="Admin Panel">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <!-- Hero Carousel -->
+            <div class="hero-carousel" id="hero-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="https://kitbash3d.com/cdn/shop/products/CBP_WEB_SET_GALLERY_01.jpg" alt="Cyberpunk Fashion">
+                        <div class="slide-content">
+                            <h2 class="glitch-text" data-text="NEON INFILTRATOR">NEON INFILTRATOR</h2>
+                            <p>Limited drop - 72 pieces only</p>
+                            <div class="countdown" data-end="2025-07-15T23:59:59"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://png.pngtree.com/thumb_back/fw800/background/20250506/pngtree-futuristic-neon-jacket-with-glowing-circuit-patterns-cyberpunk-fashion-design-high-image_17251334.jpg">
+                        <div class="slide-content">
+                            <h2 class="glitch-text" data-text="GHOST PROTOCOL">GHOST PROTOCOL</h2>
+                            <p>Stealth tech embedded</p>
+                            <div class="countdown" data-end="2025-07-20T23:59:59"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.pexels.com/photos/2128042/pexels-photo-2128042.jpeg?_gl=1*1ifdl1u*_ga*MTgxNjA4MjE5NC4xNzUyMDgzNzM5*_ga_8JE65Q40S6*czE3NTIwODM3MzgkbzEkZzAkdDE3NTIwODM3MzgkajYwJGwwJGgw">
+                        <div class="slide-content">
+                            <h2 class="glitch-text" data-text="VOID RUNNER">VOID RUNNER</h2>
+                            <p>Neural mesh integration</p>
+                            <div class="countdown" data-end="2025-07-25T23:59:59"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://techwearstorm.com/cdn/shop/files/cyberpunk-clothing-techwearstorm-12.webp">
+                        <div class="slide-content">
+                            <h2 class="glitch-text" data-text="CHROME DYNASTY">CHROME DYNASTY</h2>
+                            <p>Reflective armor plating</p>
+                            <div class="countdown" data-end="2025-07-30T23:59:59"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://png.pngtree.com/thumb_back/fw800/background/20250506/pngtree-futuristic-neon-jacket-with-glowing-circuit-patterns-cyberpunk-fashion-design-high-image_17251334.jpg">
+                        <div class="slide-content">
+                            <h2 class="glitch-text" data-text="DIGITAL PROPHET">DIGITAL PROPHET</h2>
+                            <p>Code-woven fabric technology</p>
+                            <div class="countdown" data-end="2025-08-05T23:59:59"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="carousel-prev">‹</button>
+                    <button class="carousel-btn next" id="carousel-next">›</button>
+                </div>
+                <div class="carousel-indicators" id="carousel-indicators"></div>
+            </div>
+
+            <!-- Hero Content Overlay -->
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="main-logo glitch-text" data-text="SEPHYX">SEPHYX</h1>
+                    <p class="tagline flicker">CRYPTIC DRIP TERMINAL</p>
+                    <p class="subtitle">// UNAUTHORIZED ACCESS DETECTED //</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection Page -->
+        <section id="collection-page" class="page">
+            <div class="container">
+                <h2 class="page-title glitch-text" data-text="COLLECTION">COLLECTION</h2>
+                
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <select id="style-filter" class="filter-select">
+                        <option value="">ALL STYLES</option>
+                        <option value="hoodie">HOODIES</option>
+                        <option value="jacket">JACKETS</option>
+                        <option value="tee">TEES</option>
+                        <option value="accessory">ACCESSORIES</option>
+                    </select>
+                    <select id="rarity-filter" class="filter-select">
+                        <option value="">ALL RARITIES</option>
+                        <option value="common">COMMON</option>
+                        <option value="rare">RARE</option>
+                        <option value="legendary">LEGENDARY</option>
+                        <option value="mythic">MYTHIC</option>
+                    </select>
+                    <select id="price-filter" class="filter-select">
+                        <option value="">ALL PRICES</option>
+                        <option value="0-50">$0 - $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-200">$100 - $200</option>
+                        <option value="200+">$200+</option>
+                    </select>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="product-grid">
+                    <!-- Products will be dynamically generated -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Drops Page -->
+        <section id="drops-page" class="page">
+            <div class="container">
+                <h2 class="page-title glitch-text" data-text="DROPS">DROPS</h2>
+                <div class="drops-content">
+                    <div class="upcoming-drops">
+                        <h3 class="section-title">// UPCOMING RELEASES //</h3>
+                        <div class="drops-grid">
+                            <div class="drop-card">
+                                <div class="drop-image-container">
+                                    <img src="https://pixabay.com/get/g3b1d3e03feb027293737fb92760ae935317c938e794c1ed14ad9a7d40189f6ed7fc85a5e5c20fe0e23560ef7cdaf05f6b8c046c38fa65642f84b887c16e629f3_1280.jpg" alt="Neural Phantom Collection">
+                                    <div class="drop-overlay">
+                                        <span class="drop-status">COMING SOON</span>
+                                    </div>
+                                </div>
+                                <div class="drop-info">
+                                    <h4 class="drop-title">NEURAL PHANTOM COLLECTION</h4>
+                                    <p class="drop-description">Advanced neural-mesh integrated apparel with reactive LED systems</p>
+                                    <div class="drop-countdown" data-end="2025-07-20T00:00:00">
+                                        <div class="countdown-item">
+                                            <span class="countdown-value" id="days">12</span>
+                                            <span class="countdown-label">DAYS</span>
+                                        </div>
+                                        <div class="countdown-item">
+                                            <span class="countdown-value" id="hours">08</span>
+                                            <span class="countdown-label">HOURS</span>
+                                        </div>
+                                        <div class="countdown-item">
+                                            <span class="countdown-value" id="minutes">45</span>
+                                            <span class="countdown-label">MINS</span>
+                                        </div>
+                                    </div>
+                                    <button class="notify-btn">NOTIFY ME</button>
+                                </div>
+                            </div>
+                            
+                            <div class="drop-card">
+                                <div class="drop-image-container">
+                                    <img src="https://pixabay.com/get/ga4d739d1696c5d92ac99e3e36c22a50984c19d55bb0a6021ca3376e882cd31b38e65898cfa1d71921430e6c5db8c98615f4323789e29b301e101335aadd46798_1280.jpg" alt="Chrome Dynasty Remastered">
+                                    <div class="drop-overlay">
+                                        <span class="drop-status">LIMITED</span>
+                                    </div>
+                                </div>
+                                <div class="drop-info">
+                                    <h4 class="drop-title">CHROME DYNASTY REMASTERED</h4>
+                                    <p class="drop-description">Upgraded reflective armor plating with enhanced protection</p>
+                                    <div class="drop-countdown" data-end="2025-08-05T00:00:00">
+                                        <div class="countdown-item">
+                                            <span class="countdown-value">28</span>
+                                            <span class="countdown-label">DAYS</span>
+                                        </div>
+                                        <div class="countdown-item">
+                                            <span class="countdown-value">15</span>
+                                            <span class="countdown-label">HOURS</span>
+                                        </div>
+                                        <div class="countdown-item">
+                                            <span class="countdown-value">32</span>
+                                            <span class="countdown-label">MINS</span>
+                                        </div>
+                                    </div>
+                                    <button class="notify-btn">NOTIFY ME</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="past-drops">
+                        <h3 class="section-title">// ARCHIVE //</h3>
+                        <div class="archive-list">
+                            <div class="archive-item">
+                                <span class="archive-name">VOID RUNNER GENESIS</span>
+                                <span class="archive-date">2024.12.15</span>
+                                <span class="archive-status sold-out">SOLD OUT</span>
+                            </div>
+                            <div class="archive-item">
+                                <span class="archive-name">NEON INFILTRATOR ALPHA</span>
+                                <span class="archive-date">2024.11.22</span>
+                                <span class="archive-status sold-out">SOLD OUT</span>
+                            </div>
+                            <div class="archive-item">
+                                <span class="archive-name">DIGITAL PROPHET BETA</span>
+                                <span class="archive-date">2024.10.31</span>
+                                <span class="archive-status sold-out">SOLD OUT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranks Page -->
+        <section id="ranks-page" class="page">
+            <div class="container">
+                <h2 class="page-title glitch-text" data-text="RANKS">RANKS</h2>
+                <div class="ranks-content">
+                    <div class="rank-explanation">
+                        <h3 class="section-title">// OPERATIVE HIERARCHY //</h3>
+                        <p class="rank-description">
+                            Progress through the SEPHYX hierarchy by completing missions, making purchases, and proving your dedication to the cause. 
+                            Each rank unlocks exclusive benefits and access to classified content.
+                        </p>
+                    </div>
+                    
+                    <div class="ranks-grid">
+                        <div class="rank-card initiate">
+                            <div class="rank-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="rank-info">
+                                <h4 class="rank-title">INITIATE</h4>
+                                <div class="rank-requirement">0 - 99 XP</div>
+                                <div class="rank-benefits">
+                                    <div class="benefit">• Basic access to collection</div>
+                                    <div class="benefit">• Standard pricing</div>
+                                    <div class="benefit">• Community forum access</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rank-card terminal-user">
+                            <div class="rank-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <div class="rank-info">
+                                <h4 class="rank-title">TERMINAL USER</h4>
+                                <div class="rank-requirement">100 - 199 XP</div>
+                                <div class="rank-benefits">
+                                    <div class="benefit">• Early drop notifications</div>
+                                    <div class="benefit">• 5% discount on orders</div>
+                                    <div class="benefit">• Basic terminal access</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rank-card data-runner">
+                            <div class="rank-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="rank-info">
+                                <h4 class="rank-title">DATA RUNNER</h4>
+                                <div class="rank-requirement">200 - 499 XP</div>
+                                <div class="rank-benefits">
+                                    <div class="benefit">• Pre-order access</div>
+                                    <div class="benefit">• 10% discount on orders</div>
+                                    <div class="benefit">• Exclusive colorways</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rank-card cyber-ghost">
+                            <div class="rank-icon">
+                                <i class="fas fa-ghost"></i>
+                            </div>
+                            <div class="rank-info">
+                                <h4 class="rank-title">CYBER GHOST</h4>
+                                <div class="rank-requirement">500 - 999 XP</div>
+                                <div class="rank-benefits">
+                                    <div class="benefit">• Limited edition access</div>
+                                    <div class="benefit">• 15% discount on orders</div>
+                                    <div class="benefit">• Priority customer support</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rank-card neon-thief">
+                            <div class="rank-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="rank-info">
+                                <h4 class="rank-title">NEON THIEF</h4>
+                                <div class="rank-requirement">1000+ XP</div>
+                                <div class="rank-benefits">
+                                    <div class="benefit">• VAULT ACCESS GRANTED</div>
+                                    <div class="benefit">• 20% discount on all orders</div>
+                                    <div class="benefit">• Exclusive 1-of-1 pieces</div>
+                                    <div class="benefit">• Direct designer contact</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact-page" class="page">
+            <div class="container">
+                <h2 class="page-title glitch-text" data-text="CONTACT">CONTACT</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3 class="section-title">// ESTABLISH CONNECTION //</h3>
+                        <p class="contact-description">
+                            Reach out through secure channels. Our operatives monitor all communications 24/7.
+                        </p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-label">Instagram</div>
+                                    <a href="https://instagram.com/sephyxofficial" target="_blank" class="contact-link">@sephyxofficial</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fab fa-discord"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-label">Discord</div>
+                                    <div class="contact-link">SEPHYX Collective</div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-link">contact@sephyx.underground</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-section">
+                        <h3 class="section-title">// SECURE MESSAGE //</h3>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="contact-name">OPERATIVE NAME</label>
+                                <input type="text" id="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">SECURE CHANNEL</label>
+                                <input type="email" id="contact-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">MISSION TYPE</label>
+                                <select id="contact-subject" required>
+                                    <option value="">Select Mission Type</option>
+                                    <option value="order">Order Inquiry</option>
+                                    <option value="custom">Custom Design</option>
+                                    <option value="collaboration">Collaboration</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">ENCRYPTED MESSAGE</label>
+                                <textarea id="contact-message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">TRANSMIT MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="auth-title">ACCESS TERMINAL</h3>
+                <button class="modal-close" id="auth-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div class="form-group">
+                        <label for="auth-username">USERNAME</label>
+                        <input type="text" id="auth-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="auth-password">PASSWORD</label>
+                        <input type="password" id="auth-password" required>
+                    </div>
+                    <div class="form-group" id="confirm-group" style="display: none;">
+                        <label for="auth-confirm">CONFIRM PASSWORD</label>
+                        <input type="password" id="auth-confirm">
+                    </div>
+                    <button type="submit" class="auth-submit" id="auth-submit">LOGIN</button>
+                    <button type="button" class="auth-toggle" id="auth-toggle">
+                        Don't have access? <span>REGISTER</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>ORDER TERMINAL</h3>
+                <button class="modal-close" id="cart-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div class="cart-total">
+                    <div class="total-line">
+                        <span>TOTAL: $<span id="cart-total">0</span></span>
+                    </div>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn-primary" id="checkout-btn">GENERATE ORDER</button>
+                    <button class="btn-secondary" id="clear-cart">CLEAR VAULT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>ORDER GENERATED</h3>
+                <button class="modal-close" id="order-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="order-message">
+                    <p>Copy this message and send it to our Instagram:</p>
+                    <a href="https://instagram.com/sephyxofficial" target="_blank" class="instagram-link">
+                        @sephyxofficial
+                    </a>
+                    <textarea id="order-text" class="order-textarea" readonly></textarea>
+                    <button class="btn-primary" id="copy-order">COPY TO CLIPBOARD</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal Popup -->
+    <div id="terminal-popup" class="terminal-popup">
+        <div class="terminal-content">
+            <div class="terminal-header">
+                <span>SYSTEM MESSAGE</span>
+                <button class="terminal-close">&times;</button>
+            </div>
+            <div class="terminal-body">
+                <div id="terminal-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header" id="chatbot-header">
+            <span class="chatbot-title">NEURAL AI</span>
+            <span class="chatbot-status">ONLINE</span>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">
+                Welcome to SEPHYX, operative. How may I assist your infiltration?
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Enter command...">
+            <button id="chatbot-send">SEND</button>
+        </div>
+    </div>
+
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Audio Element -->
+    <audio id="bgm" loop>
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmQdCCuI0fPRfSMFm4G9haqZZYp2jXaQeJE4kWGOZYZ1jXaO+Z..." type="audio/wav">
+    </audio>
+
+    <script src="sounds.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

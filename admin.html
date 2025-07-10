@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPHYX - ADMIN TERMINAL</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-logo">
+                <span class="glitch-text" data-text="SEPHYX">SEPHYX</span>
+                <div class="login-subtitle">ADMIN TERMINAL</div>
+            </div>
+            <form id="admin-login-form" class="login-form">
+                <div class="form-group">
+                    <label for="admin-username">ADMIN ID</label>
+                    <input type="text" id="admin-username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">ACCESS CODE</label>
+                    <input type="password" id="admin-password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="login-btn">AUTHENTICATE</button>
+                <div class="login-error" id="login-error"></div>
+            </form>
+            <div class="login-footer">
+                <a href="index.html" class="back-link">← Return to Main Terminal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="admin-dashboard hidden">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <h1 class="admin-title glitch-text" data-text="ADMIN TERMINAL">ADMIN TERMINAL</h1>
+                <div class="admin-status">STATUS: AUTHENTICATED</div>
+            </div>
+            <div class="header-right">
+                <span class="admin-user" id="admin-user"></span>
+                <button class="logout-btn" id="admin-logout">LOGOUT</button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="admin-nav">
+            <button class="nav-btn active" data-section="products">PRODUCT MANAGER</button>
+            <button class="nav-btn" data-section="inventory">INVENTORY EDITOR</button>
+            <button class="nav-btn" data-section="orders">ORDER LOGS</button>
+            <button class="nav-btn" data-section="users">USER MONITOR</button>
+            <button class="nav-btn" data-section="xp">XP & RANK MANAGER</button>
+            <button class="nav-btn" data-section="drops">DROP SCHEDULER</button>
+            <button class="nav-btn" data-section="vault">VAULT CONTROL</button>
+            <button class="nav-btn" data-section="settings">SITE TOGGLE CONTROLS</button>
+            <button class="nav-btn" data-section="backup">BACKUP/RESTORE</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <!-- Product Manager -->
+            <section id="products-section" class="admin-section active">
+                <div class="section-header">
+                    <h2>PRODUCT MANAGER</h2>
+                    <div class="header-actions">
+                        <button class="btn-primary" id="add-product-btn">ADD NEW PRODUCT</button>
+                        <button class="btn-secondary" id="bulk-edit-btn">BULK EDIT</button>
+                    </div>
+                </div>
+                <div class="products-controls">
+                    <div class="search-bar">
+                        <input type="text" id="product-search" placeholder="Search products...">
+                        <select id="product-filter">
+                            <option value="">All Categories</option>
+                            <option value="hoodie">Hoodies</option>
+                            <option value="jacket">Jackets</option>
+                            <option value="tee">T-Shirts</option>
+                            <option value="accessory">Accessories</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Inventory Manager -->
+            <section id="inventory-section" class="admin-section">
+                <div class="section-header">
+                    <h2>INVENTORY MANAGER</h2>
+                    <button class="btn-secondary" id="reset-stock-btn">RESET ALL STOCK</button>
+                </div>
+                <div class="inventory-table">
+                    <table id="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>PRODUCT</th>
+                                <th>CURRENT STOCK</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-tbody">
+                            <!-- Inventory rows will be rendered here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Order Logs -->
+            <section id="orders-section" class="admin-section">
+                <div class="section-header">
+                    <h2>ORDER LOGS</h2>
+                    <button class="btn-secondary" id="export-orders-btn">EXPORT ORDERS</button>
+                </div>
+                <div class="orders-container" id="orders-container">
+                    <!-- Orders will be rendered here -->
+                </div>
+            </section>
+
+            <!-- User Monitor -->
+            <section id="users-section" class="admin-section">
+                <div class="section-header">
+                    <h2>USER MONITOR</h2>
+                    <div class="user-stats">
+                        <span class="stat">Total Users: <span id="total-users">0</span></span>
+                        <span class="stat">Active Today: <span id="active-today">0</span></span>
+                    </div>
+                </div>
+                <div class="users-table">
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th>USERNAME</th>
+                                <th>RANK</th>
+                                <th>XP</th>
+                                <th>VISITS</th>
+                                <th>TIME SPENT</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <!-- User rows will be rendered here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- XP & Rank Manager -->
+            <section id="xp-section" class="admin-section">
+                <div class="section-header">
+                    <h2>XP & RANK MANAGER</h2>
+                    <button class="btn-secondary" id="reset-all-xp-btn">RESET ALL XP</button>
+                </div>
+                <div class="xp-controls">
+                    <div class="xp-form">
+                        <h3>XP Management</h3>
+                        <select id="user-select">
+                            <option value="">Select User</option>
+                        </select>
+                        <input type="number" id="xp-amount" placeholder="XP Amount" min="0">
+                        <input type="text" id="xp-reason" placeholder="Reason for XP change">
+                        <div class="xp-actions">
+                            <button class="btn-primary" id="add-xp-btn">ADD XP</button>
+                            <button class="btn-secondary" id="subtract-xp-btn">SUBTRACT XP</button>
+                        </div>
+                    </div>
+                    <div class="rank-form">
+                        <h3>Rank Management</h3>
+                        <select id="rank-user-select">
+                            <option value="">Select User</option>
+                        </select>
+                        <select id="new-rank">
+                            <option value="INITIATE">INITIATE (0-99 XP)</option>
+                            <option value="TERMINAL USER">TERMINAL USER (100-199 XP)</option>
+                            <option value="DATA RUNNER">DATA RUNNER (200-499 XP)</option>
+                            <option value="CYBER GHOST">CYBER GHOST (500-999 XP)</option>
+                            <option value="NEON THIEF">NEON THIEF (1000+ XP)</option>
+                        </select>
+                        <button class="btn-primary" id="set-rank-btn">SET RANK</button>
+                        <button class="btn-secondary" id="auto-rank-btn">AUTO-RANK ALL</button>
+                    </div>
+                </div>
+                <div class="bonus-controls">
+                    <h3>Bonus Actions</h3>
+                    <div class="bonus-actions">
+                        <button class="btn-primary" id="daily-bonus-btn">GIVE DAILY BONUS (ALL USERS)</button>
+                        <button class="btn-primary" id="event-bonus-btn">EVENT BONUS (ACTIVE USERS)</button>
+                        <input type="number" id="custom-bonus" placeholder="Custom bonus amount" min="1">
+                        <button class="btn-secondary" id="custom-bonus-btn">APPLY CUSTOM BONUS</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Drop Scheduler -->
+            <section id="drops-section" class="admin-section">
+                <div class="section-header">
+                    <h2>DROP SCHEDULER</h2>
+                    <button class="btn-primary" id="create-drop-btn">CREATE NEW DROP</button>
+                </div>
+                <div class="scheduled-drops">
+                    <h3>Scheduled Drops</h3>
+                    <div class="drops-list" id="scheduled-drops-list">
+                        <!-- Scheduled drops will appear here -->
+                    </div>
+                </div>
+                <div class="drop-templates">
+                    <h3>Quick Templates</h3>
+                    <div class="template-actions">
+                        <button class="btn-secondary" id="weekend-drop-btn">WEEKEND SPECIAL</button>
+                        <button class="btn-secondary" id="flash-sale-btn">FLASH SALE (24H)</button>
+                        <button class="btn-secondary" id="limited-edition-btn">LIMITED EDITION</button>
+                        <button class="btn-secondary" id="seasonal-drop-btn">SEASONAL DROP</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vault Control -->
+            <section id="vault-section" class="admin-section">
+                <div class="section-header">
+                    <h2>VAULT ACCESS CONTROL</h2>
+                </div>
+                <div class="vault-controls">
+                    <div class="vault-users">
+                        <h3>Users with Vault Access:</h3>
+                        <div id="vault-users-list"></div>
+                    </div>
+                    <div class="vault-actions">
+                        <button class="btn-secondary" id="reset-vault-btn">RESET ALL VAULT ACCESS</button>
+                        <select id="vault-user-select">
+                            <option value="">Select User</option>
+                        </select>
+                        <button class="btn-primary" id="grant-vault-btn">GRANT VAULT ACCESS</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Site Toggle Controls -->
+            <section id="settings-section" class="admin-section">
+                <div class="section-header">
+                    <h2>SITE TOGGLE CONTROLS</h2>
+                    <div class="status-indicator">
+                        <span class="status-dot active"></span>
+                        <span>System Online</span>
+                    </div>
+                </div>
+                
+                <div class="toggle-sections">
+                    <div class="toggle-section">
+                        <h3>Core Features</h3>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="easter-eggs-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Easter Eggs</div>
+                                        <div class="setting-description">Hidden clickable elements and puzzles</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="vault-access-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Vault Access</div>
+                                        <div class="setting-description">Allow users to unlock vault content</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="konami-code-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Konami Code</div>
+                                        <div class="setting-description">Secret key sequence unlocks</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-section">
+                        <h3>Visual Effects</h3>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="glitch-effects-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Glitch Effects</div>
+                                        <div class="setting-description">Cyberpunk glitch animations</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="scanlines-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Scanlines</div>
+                                        <div class="setting-description">CRT monitor effect overlay</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="hover-effects-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Hover Effects</div>
+                                        <div class="setting-description">Interactive element animations</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="toggle-section">
+                        <h3>Audio & Messaging</h3>
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="background-music-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Background Music</div>
+                                        <div class="setting-description">Synthwave ambient music</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="sound-effects-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Sound Effects</div>
+                                        <div class="setting-description">UI interaction sounds</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="terminal-messages-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Terminal Messages</div>
+                                        <div class="setting-description">System notification popups</div>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="chatbot-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <div class="setting-info">
+                                        <div class="setting-name">Neural AI Chatbot</div>
+                                        <div class="setting-description">Interactive assistance bot</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-actions">
+                    <button class="btn-primary" id="save-settings-btn">APPLY ALL CHANGES</button>
+                    <button class="btn-secondary" id="reset-settings-btn">RESET TO DEFAULTS</button>
+                    <button class="btn-danger" id="emergency-disable-btn">EMERGENCY DISABLE ALL</button>
+                </div>
+            </section>
+
+            <!-- Backup/Restore -->
+            <section id="backup-section" class="admin-section">
+                <div class="section-header">
+                    <h2>BACKUP & RESTORE</h2>
+                </div>
+                <div class="backup-controls">
+                    <div class="export-section">
+                        <h3>Export Data</h3>
+                        <div class="export-options">
+                            <button class="btn-primary export-btn" id="export-all-btn">
+                                <i class="fas fa-download"></i>
+                                EXPORT COMPLETE SITE DATA
+                            </button>
+                            <div class="export-individual">
+                                <button class="btn-secondary export-btn" id="export-products-btn">
+                                    <i class="fas fa-box"></i>
+                                    EXPORT PRODUCTS ONLY
+                                </button>
+                                <button class="btn-secondary export-btn" id="export-users-btn">
+                                    <i class="fas fa-users"></i>
+                                    EXPORT USERS ONLY
+                                </button>
+                                <button class="btn-secondary export-btn" id="export-orders-btn">
+                                    <i class="fas fa-receipt"></i>
+                                    EXPORT ORDERS ONLY
+                                </button>
+                                <button class="btn-secondary export-btn" id="export-settings-btn">
+                                    <i class="fas fa-cog"></i>
+                                    EXPORT SETTINGS ONLY
+                                </button>
+                            </div>
+                        </div>
+                        <div class="export-format">
+                            <label>Export Format:</label>
+                            <select id="export-format">
+                                <option value="json">JSON (Recommended)</option>
+                                <option value="csv">CSV (Tables Only)</option>
+                                <option value="txt">TXT (Human Readable)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="import-section">
+                        <h3>Import Data</h3>
+                        <div class="import-area">
+                            <input type="file" id="import-file" accept=".json,.csv,.txt" style="display: none;">
+                            <div class="file-drop-zone" id="file-drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop backup file here or <button class="btn-link" id="browse-file-btn">browse files</button></p>
+                                <small>Supported formats: JSON, CSV, TXT</small>
+                            </div>
+                        </div>
+                        <div class="import-options">
+                            <label class="import-checkbox">
+                                <input type="checkbox" id="merge-data" checked>
+                                Merge with existing data (don't overwrite)
+                            </label>
+                            <label class="import-checkbox">
+                                <input type="checkbox" id="backup-before-import" checked>
+                                Create backup before importing
+                            </label>
+                        </div>
+                        <button class="btn-primary" id="import-btn" disabled>
+                            <i class="fas fa-upload"></i>
+                            IMPORT SELECTED FILE
+                        </button>
+                    </div>
+                    
+                    <div class="danger-zone">
+                        <h3>Danger Zone</h3>
+                        <div class="danger-actions">
+                            <button class="btn-danger" id="reset-products-btn">RESET PRODUCTS</button>
+                            <button class="btn-danger" id="reset-users-btn">RESET USERS</button>
+                            <button class="btn-danger" id="reset-orders-btn">RESET ORDERS</button>
+                            <button class="btn-danger" id="factory-reset-btn">FACTORY RESET ALL</button>
+                        </div>
+                        <p class="danger-warning">
+                            ⚠️ These actions cannot be undone. Make sure to export your data first.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Product Edit Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="product-modal-title">ADD PRODUCT</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="product-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-title">TITLE</label>
+                            <input type="text" id="product-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-price">PRICE</label>
+                            <input type="number" id="product-price" required min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-style">STYLE</label>
+                            <select id="product-style" required>
+                                <option value="hoodie">HOODIE</option>
+                                <option value="jacket">JACKET</option>
+                                <option value="tee">TEE</option>
+                                <option value="accessory">ACCESSORY</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-rarity">RARITY</label>
+                            <select id="product-rarity" required>
+                                <option value="common">COMMON</option>
+                                <option value="rare">RARE</option>
+                                <option value="legendary">LEGENDARY</option>
+                                <option value="mythic">MYTHIC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-stock">STOCK</label>
+                            <input type="number" id="product-stock" required min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">IMAGE URL</label>
+                        <input type="url" id="product-image" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">DESCRIPTION</label>
+                        <textarea id="product-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">SAVE PRODUCT</button>
+                        <button type="button" class="btn-secondary modal-close">CANCEL</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Drop Scheduler Modal -->
+    <div id="drop-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>CREATE NEW DROP</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="drop-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="drop-name">DROP NAME</label>
+                            <input type="text" id="drop-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="drop-type">DROP TYPE</label>
+                            <select id="drop-type" required>
+                                <option value="limited">Limited Edition</option>
+                                <option value="flash">Flash Sale</option>
+                                <option value="exclusive">Exclusive Release</option>
+                                <option value="seasonal">Seasonal Drop</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="drop-date">RELEASE DATE</label>
+                            <input type="datetime-local" id="drop-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="drop-duration">DURATION (HOURS)</label>
+                            <input type="number" id="drop-duration" min="1" max="168" value="24">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="drop-discount">DISCOUNT PERCENTAGE</label>
+                        <input type="number" id="drop-discount" min="0" max="90" value="0">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">SCHEDULE DROP</button>
+                        <button type="button" class="btn-secondary modal-close">CANCEL</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content confirm-modal">
+            <div class="modal-header">
+                <h3 id="confirm-title">CONFIRM ACTION</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-message">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="hideModal('confirm-modal')">CANCEL</button>
+                <button type="button" class="btn-danger" id="confirm-action">CONFIRM</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

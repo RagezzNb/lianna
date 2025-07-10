@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPHYX - VAULT ACCESS GRANTED</title>
+    <link rel="stylesheet" href="vault.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Access Verification -->
+    <div id="access-screen" class="access-screen">
+        <div class="access-container">
+            <div class="access-logo">
+                <span class="glitch-text" data-text="VAULT">VAULT</span>
+                <div class="access-subtitle">RESTRICTED ACCESS</div>
+            </div>
+            <div class="access-message">
+                <div class="scanning-text">SCANNING NEURAL PATTERNS...</div>
+                <div class="access-bar">
+                    <div class="access-progress"></div>
+                </div>
+                <div class="access-result" id="access-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vault Dashboard -->
+    <div id="vault-dashboard" class="vault-dashboard hidden">
+        <!-- Header -->
+        <header class="vault-header">
+            <div class="header-left">
+                <h1 class="vault-title glitch-text" data-text="SEPHYX VAULT">SEPHYX VAULT</h1>
+                <div class="vault-status">STATUS: AUTHENTICATED</div>
+            </div>
+            <div class="header-right">
+                <span class="vault-user" id="vault-user"></span>
+                <a href="index.html" class="exit-btn">EXIT VAULT</a>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="vault-nav">
+            <button class="vault-nav-btn active" data-section="exclusive">EXCLUSIVE DROPS</button>
+            <button class="vault-nav-btn" data-section="codes">DISCOUNT CODES</button>
+            <button class="vault-nav-btn" data-section="lore">CLASSIFIED LORE</button>
+            <button class="vault-nav-btn" data-section="archives">DATA ARCHIVES</button>
+            <button class="vault-nav-btn" data-section="messages">ENCRYPTED MSGS</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="vault-content">
+            <!-- Exclusive Drops -->
+            <section id="exclusive-section" class="vault-section active">
+                <div class="section-header">
+                    <h2>EXCLUSIVE DROPS</h2>
+                    <div class="vault-alert">VAULT MEMBERS ONLY</div>
+                </div>
+                <div class="exclusive-grid" id="exclusive-grid">
+                    <!-- Exclusive items will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Discount Codes -->
+            <section id="codes-section" class="vault-section">
+                <div class="section-header">
+                    <h2>DISCOUNT CODES</h2>
+                    <div class="vault-alert">CLASSIFIED INTEL</div>
+                </div>
+                <div class="codes-container">
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="code-name">GHOST20</span>
+                            <span class="code-discount">20% OFF</span>
+                        </div>
+                        <div class="code-description">Phantom protocol discount for stealth gear</div>
+                        <button class="copy-code-btn" onclick="vault.copyCode('GHOST20')">COPY CODE</button>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="code-name">NEON15</span>
+                            <span class="code-discount">15% OFF</span>
+                        </div>
+                        <div class="code-description">Neural enhancement bundle discount</div>
+                        <button class="copy-code-btn" onclick="vault.copyCode('NEON15')">COPY CODE</button>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="code-name">CYBER25</span>
+                            <span class="code-discount">25% OFF</span>
+                        </div>
+                        <div class="code-description">Ultimate vault member exclusive</div>
+                        <button class="copy-code-btn" onclick="vault.copyCode('CYBER25')">COPY CODE</button>
+                    </div>
+                    
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="code-name">MATRIX10</span>
+                            <span class="code-discount">10% OFF</span>
+                        </div>
+                        <div class="code-description">Reality shifter starter pack</div>
+                        <button class="copy-code-btn" onclick="vault.copyCode('MATRIX10')">COPY CODE</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Classified Lore -->
+            <section id="lore-section" class="vault-section">
+                <div class="section-header">
+                    <h2>CLASSIFIED LORE</h2>
+                    <div class="vault-alert">TOP SECRET</div>
+                </div>
+                <div class="lore-container">
+                    <div class="lore-document">
+                        <div class="document-header">
+                            <span class="doc-title">PROJECT SEPHYX ORIGINS</span>
+                            <span class="doc-classification">LEVEL 5 CLEARANCE</span>
+                        </div>
+                        <div class="document-content">
+                            <p>In 2024, a collective of rogue designers infiltrated the fashion underground. Their mission: to create clothing that bridges the digital and physical realms.</p>
+                            <p>Each SEPHYX piece contains embedded nanotechnology, allowing wearers to interface with digital networks through neural pathways.</p>
+                            <p>The fabric itself is woven with quantum fibers, creating a reactive mesh that responds to the wearer's biometric data.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lore-document">
+                        <div class="document-header">
+                            <span class="doc-title">THE NEON PROPHECY</span>
+                            <span class="doc-classification">MYTHIC LEVEL</span>
+                        </div>
+                        <div class="document-content">
+                            <p>"When the last server falls and reality bleeds into the void, those who wear the mark of SEPHYX shall inherit the digital throne."</p>
+                            <p>This ancient code, discovered in the deepest layers of the dark web, speaks of a coming convergence between fashion and technology.</p>
+                            <p>Vault members are the chosen few who will witness this transformation firsthand.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lore-document">
+                        <div class="document-header">
+                            <span class="doc-title">OPERATION CHROME DYNASTY</span>
+                            <span class="doc-classification">CLASSIFIED</span>
+                        </div>
+                        <div class="document-content">
+                            <p>A secret collaboration with underground cyber-enhancement clinics has resulted in clothing that can interface with cybernetic implants.</p>
+                            <p>Chrome Dynasty pieces feature reflective armor plating that can deflect both physical and digital attacks.</p>
+                            <p>Only 7 pieces were ever created. Their current locations remain unknown.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Archives -->
+            <section id="archives-section" class="vault-section">
+                <div class="section-header">
+                    <h2>DATA ARCHIVES</h2>
+                    <div class="vault-alert">ENCRYPTED FILES</div>
+                </div>
+                <div class="archives-container">
+                    <div class="archive-file">
+                        <div class="file-header">
+                            <i class="fas fa-file-code"></i>
+                            <span class="file-name">neural_mesh_specs.dat</span>
+                            <span class="file-size">2.3 MB</span>
+                        </div>
+                        <div class="file-description">Technical specifications for neural mesh integration in SEPHYX garments</div>
+                        <button class="download-btn" onclick="vault.downloadFile('neural_mesh_specs.dat')">DECRYPT & DOWNLOAD</button>
+                    </div>
+                    
+                    <div class="archive-file">
+                        <div class="file-header">
+                            <i class="fas fa-database"></i>
+                            <span class="file-name">member_database.enc</span>
+                            <span class="file-size">15.7 MB</span>
+                        </div>
+                        <div class="file-description">Encrypted database of all vault members and their access levels</div>
+                        <button class="download-btn" onclick="vault.downloadFile('member_database.enc')">DECRYPT & DOWNLOAD</button>
+                    </div>
+                    
+                    <div class="archive-file">
+                        <div class="file-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <span class="file-name">security_protocols.bin</span>
+                            <span class="file-size">5.1 MB</span>
+                        </div>
+                        <div class="file-description">Advanced security protocols for protecting SEPHYX technology</div>
+                        <button class="download-btn" onclick="vault.downloadFile('security_protocols.bin')">DECRYPT & DOWNLOAD</button>
+                    </div>
+                    
+                    <div class="archive-file">
+                        <div class="file-header">
+                            <i class="fas fa-eye"></i>
+                            <span class="file-name">surveillance_feeds.vir</span>
+                            <span class="file-size">128.4 MB</span>
+                        </div>
+                        <div class="file-description">Live surveillance feeds from SEPHYX manufacturing facilities</div>
+                        <button class="download-btn" onclick="vault.downloadFile('surveillance_feeds.vir')">DECRYPT & DOWNLOAD</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Encrypted Messages -->
+            <section id="messages-section" class="vault-section">
+                <div class="section-header">
+                    <h2>ENCRYPTED MESSAGES</h2>
+                    <div class="vault-alert">NEURAL LINK REQUIRED</div>
+                </div>
+                <div class="messages-container">
+                    <div class="message-thread">
+                        <div class="message-header">
+                            <span class="sender">GHOST_PROTOCOL_01</span>
+                            <span class="timestamp">2025.01.15 - 03:42:17</span>
+                        </div>
+                        <div class="message-content">
+                            The new shipment has arrived. 50 units of NEON INFILTRATOR ready for distribution. Quantum encryption is holding steady at 99.7% integrity.
+                        </div>
+                        <div class="message-footer">
+                            <span class="classification">LEVEL 3 CLEARANCE</span>
+                        </div>
+                    </div>
+                    
+                    <div class="message-thread">
+                        <div class="message-header">
+                            <span class="sender">NEURAL_ADMIN_07</span>
+                            <span class="timestamp">2025.01.14 - 18:23:41</span>
+                        </div>
+                        <div class="message-content">
+                            WARNING: Anomalous activity detected in sector 7. CHROME DYNASTY prototypes showing signs of autonomous behavior. Recommend immediate containment.
+                        </div>
+                        <div class="message-footer">
+                            <span class="classification">URGENT - LEVEL 5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="message-thread">
+                        <div class="message-header">
+                            <span class="sender">VOID_RUNNER_13</span>
+                            <span class="timestamp">2025.01.13 - 12:05:33</span>
+                        </div>
+                        <div class="message-content">
+                            Phase 2 of Operation DIGITAL PROPHET is go. All vault members will receive priority access to the neural enhancement modules.
+                        </div>
+                        <div class="message-footer">
+                            <span class="classification">CLASSIFIED</span>
+                        </div>
+                    </div>
+                    
+                    <div class="message-thread">
+                        <div class="message-header">
+                            <span class="sender">MATRIX_OVERLORD</span>
+                            <span class="timestamp">2025.01.12 - 09:17:28</span>
+                        </div>
+                        <div class="message-content">
+                            The convergence approaches. Those who have proven their loyalty will be among the first to transcend. Continue spreading the word through encrypted channels only.
+                        </div>
+                        <div class="message-footer">
+                            <span class="classification">EYES ONLY</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Terminal Messages -->
+    <div id="vault-terminal" class="vault-terminal">
+        <div class="terminal-content">
+            <div class="terminal-header">VAULT SYSTEM</div>
+            <div class="terminal-body" id="terminal-body">
+                <div class="terminal-line">SEPHYX VAULT v2.4.7 INITIALIZED</div>
+                <div class="terminal-line">NEURAL INTERFACE: CONNECTED</div>
+                <div class="terminal-line">QUANTUM ENCRYPTION: ACTIVE</div>
+                <div class="terminal-line">BIOMETRIC SCAN: VERIFIED</div>
+                <div class="terminal-line typing" id="typing-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Audio Element -->
+    <audio id="vault-audio" loop>
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmQdCCuI0fPRfSMFm4G9haqZZYp2jXaQeJE4kWGOZYZ1jXaO+Z..." type="audio/wav">
+    </audio>
+
+    <script src="vault.js"></script>
+</body>
+</html>
+
+<style>
+/* Vault-specific styles */
+:root {
+    --primary-bg: #0a0a0a;
+    --secondary-bg: #1a1a1a;
+    --accent-purple: #8b5cf6;
+    --accent-cyan: #06b6d4;
+    --accent-pink: #ec4899;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --border-color: #374151;
+    --glitch-red: #ff0040;
+    --success-green: #10b981;
+    --warning-yellow: #f59e0b;
+    --vault-gold: #fbbf24;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', monospace;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Access Screen */
+.access-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.access-container {
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.access-logo .glitch-text {
+    font-family: 'Orbitron', monospace;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--vault-gold);
+    position: relative;
+    display: inline-block;
+}
+
+.access-subtitle {
+    font-family: 'Orbitron', monospace;
+    color: var(--accent-cyan);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    letter-spacing: 3px;
+}
+
+.access-message {
+    margin-top: 3rem;
+}
+
+.scanning-text {
+    color: var(--accent-purple);
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 2rem;
+    animation: flicker 1.5s infinite;
+}
+
+.access-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--secondary-bg);
+    border: 2px solid var(--accent-cyan);
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.access-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--vault-gold));
+    width: 0%;
+    animation: accessLoading 3s ease-in-out forwards;
+}
+
+.access-result {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+/* Vault Dashboard */
+.vault-dashboard {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Header */
+.vault-header {
+    background: var(--secondary-bg);
+    border-bottom: 2px solid var(--vault-gold);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vault-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    color: var(--vault-gold);
+}
+
+.vault-status {
+    color: var(--success-green);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.vault-user {
+    color: var(--accent-cyan);
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.exit-btn {
+    background: var(--accent-pink);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.exit-btn:hover {
+    background: #db2777;
+    box-shadow: 0 0 15px var(--accent-pink);
+}
+
+/* Navigation */
+.vault-nav {
+    background: var(--primary-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.vault-nav-btn {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.vault-nav-btn:hover,
+.vault-nav-btn.active {
+    border-color: var(--vault-gold);
+    color: var(--vault-gold);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+/* Main Content */
+.vault-content {
+    flex: 1;
+    padding: 2rem;
+    background: var(--primary-bg);
+}
+
+.vault-section {
+    display: none;
+}
+
+.vault-section.active {
+    display: block;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-header h2 {
+    font-family: 'Orbitron', monospace;
+    color: var(--accent-cyan);
+    font-size: 1.5rem;
+}
+
+.vault-alert {
+    background: var(--accent-pink);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+/* Exclusive Drops */
+.exclusive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.exclusive-item {
+    background: var(--secondary-bg);
+    border: 2px solid var(--vault-gold);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.exclusive-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+}
+
+.exclusive-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.exclusive-info {
+    padding: 1.5rem;
+}
+
+.exclusive-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--vault-gold);
+}
+
+.exclusive-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.exclusive-price {
+    font-size: 1.5rem;
+    color: var(--accent-cyan);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.exclusive-btn {
+    width: 100%;
+    background: linear-gradient(45deg, var(--vault-gold), var(--accent-cyan));
+    border: none;
+    color: var(--primary-bg);
+    padding: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.exclusive-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+}
+
+/* Discount Codes */
+.codes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.code-card {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.code-card:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.code-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+.code-discount {
+    background: var(--accent-purple);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.code-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.copy-code-btn {
+    width: 100%;
+    background: var(--accent-cyan);
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.copy-code-btn:hover {
+    background: #0891b2;
+    transform: scale(1.02);
+}
+
+/* Lore Documents */
+.lore-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.lore-document {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.lore-document:hover {
+    border-color: var(--accent-cyan);
+}
+
+.document-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.doc-title {
+    font-family: 'Orbitron', monospace;
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+.doc-classification {
+    background: var(--accent-pink);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.document-content {
+    padding: 1.5rem;
+    line-height: 1.6;
+}
+
+.document-content p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Archive Files */
+.archives-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.archive-file {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.archive-file:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+}
+
+.file-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.file-header i {
+    color: var(--accent-cyan);
+    font-size: 1.5rem;
+}
+
+.file-name {
+    font-family: 'Orbitron', monospace;
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+.file-size {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.file-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 1rem;
+    flex: 2;
+}
+
+.download-btn {
+    background: var(--accent-purple);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.download-btn:hover {
+    background: #7c3aed;
+    transform: scale(1.05);
+}
+
+/* Messages */
+.messages-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.message-thread {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.message-thread:hover {
+    border-color: var(--accent-cyan);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(6, 182, 212, 0.1);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sender {
+    font-family: 'Orbitron', monospace;
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+.timestamp {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.message-content {
+    padding: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.message-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+}
+
+.classification {
+    background: var(--accent-pink);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Terminal */
+.vault-terminal {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 400px;
+    background: var(--primary-bg);
+    border: 2px solid var(--accent-cyan);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.terminal-header {
+    background: var(--accent-cyan);
+    color: var(--primary-bg);
+    padding: 0.5rem 1rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.terminal-body {
+    padding: 1rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.terminal-line {
+    margin-bottom: 0.25rem;
+}
+
+.typing {
+    animation: typing 3s steps(30) infinite;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    animation: glitch-1 0.5s infinite;
+    color: var(--glitch-red);
+    z-index: -1;
+}
+
+.glitch-text::after {
+    animation: glitch-2 0.5s infinite;
+    color: var(--accent-cyan);
+    z-index: -2;
+}
+
+/* Scanlines */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 255, 255, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+    animation: scanlines 0.1s linear infinite;
+}
+
+/* Animations */
+@keyframes accessLoading {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(2px, -2px); }
+    40% { transform: translate(2px, 2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(-2px, 2px); }
+}
+
+@keyframes scanlines {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+}
+
+@keyframes typing {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vault-header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .vault-nav {
+        padding: 1rem;
+        flex-direction: column;
+    }
+    
+    .vault-content {
+        padding: 1rem;
+    }
+    
+    .exclusive-grid,
+    .codes-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .archive-file {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .vault-terminal {
+        width: calc(100% - 40px);
+        left: 20px;
+        right: 20px;
+    }
+}
+</style>
+
+<script>
+// Vault JavaScript
+class SephyxVault {
+    constructor() {
+        this.currentUser = null;
+        this.currentSection = 'exclusive';
+        this.terminalLines = [
+            'ACCESSING NEURAL PATHWAYS...',
+            'QUANTUM ENCRYPTION VERIFIED',
+            'BIOMETRIC SCAN COMPLETE',
+            'VAULT ACCESS GRANTED',
+            'WELCOME TO THE INNER CIRCLE',
+            'CLASSIFIED DATA UNLOCKED',
+            'NEURAL INTERFACE STABLE'
+        ];
+        this.terminalIndex = 0;
+        
+        this.init();
+    }
+
+    init() {
+        this.checkVaultAccess();
+        this.setupEventListeners();
+        this.startTerminalOutput();
+        this.loadExclusiveItems();
+    }
+
+    checkVaultAccess() {
+        const session = localStorage.getItem('sephyx_session');
+        const vaultUnlocked = localStorage.getItem('sephyx_vault_unlocked') === 'true';
+        
+        if (session) {
+            this.currentUser = JSON.parse(session);
+        }
+        
+        if (!this.currentUser || (!this.currentUser.vaultAccess && !vaultUnlocked)) {
+            this.showAccessDenied();
+            return;
+        }
+        
+        this.showAccessScreen();
+    }
+
+    showAccessDenied() {
+        document.getElementById('access-result').innerHTML = 
+            '<span style="color: var(--glitch-red);">ACCESS DENIED - INSUFFICIENT CLEARANCE</span>';
+        
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 3000);
+    }
+
+    showAccessScreen() {
+        setTimeout(() => {
+            document.getElementById('access-result').innerHTML = 
+                '<span style="color: var(--success-green);">ACCESS GRANTED - WELCOME TO THE VAULT</span>';
+        }, 3000);
+        
+        setTimeout(() => {
+            this.showVault();
+        }, 4500);
+    }
+
+    showVault() {
+        document.getElementById('access-screen').style.display = 'none';
+        document.getElementById('vault-dashboard').classList.remove('hidden');
+        
+        if (this.currentUser) {
+            document.getElementById('vault-user').textContent = this.currentUser.username;
+        }
+    }
+
+    showSection(sectionName) {
+        document.querySelectorAll('.vault-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.vault-nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        document.getElementById(sectionName + '-section').classList.add('active');
+        document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
+        
+        this.currentSection = sectionName;
+    }
+
+    loadExclusiveItems() {
+        const exclusiveItems = [
+            {
+                title: "PHANTOM STRIKE JACKET",
+                price: 299,
+                image: "https://pixabay.com/get/g22a96e3317df7421a2fb34b6abe222607e6a6a3f9c6bf74e392664da467a98ddc7cc2d24939e58f512a1413ab05d722692be20f54275f6293907ecb2ca93a3c0_1280.jpg",
+                description: "Exclusive vault-only jacket with phase-shift technology. Only 10 pieces exist."
+            },
+            {
+                title: "NEURAL CROWN HEADSET",
+                price: 199,
+                image: "https://pixabay.com/get/g2cca4e54f584d9637ce6ff705137a3886a5e71256cff8bb3afc8c4f01930018d886042df35c4ffd660d90c24314f3dcc6833468b28e38a8eef7d193b5e82977a_1280.jpg",
+                description: "Direct neural interface headset for advanced vault members. Telepathic communication enabled."
+            },
+            {
+                title: "VOID WALKER BOOTS",
+                price: 249,
+                image: "https://pixabay.com/get/gd2646c9f16c4240b6c83a4a2528d2775f13097578ac05e52ebdae5475b6dbed64e923e399b818983475bf1e99006cff2444eefc7326c3f73e5d4c00594da82a6_1280.jpg",
+                description: "Gravity-defying boots that allow walking through digital dimensions. Ultra-rare prototype."
+            },
+            {
+                title: "QUANTUM MESH SUIT",
+                price: 599,
+                image: "https://pixabay.com/get/gc3c311c4f7ba7808c511cb211998749782160338f27fdc2522411b26dd886f7d6dddf84b619cd0e07605f18bf9a8394a22d2766b31b4b33093333708c74a89a5_1280.jpg",
+                description: "Full-body quantum suit that phases between realities. The ultimate vault exclusive."
+            }
+        ];
+
+        const grid = document.getElementById('exclusive-grid');
+        grid.innerHTML = '';
+
+        exclusiveItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'exclusive-item';
+            card.innerHTML = `
+                <img src="${item.image}" alt="${item.title}" class="exclusive-image">
+                <div class="exclusive-info">
+                    <div class="exclusive-title">${item.title}</div>
+                    <div class="exclusive-description">${item.description}</div>
+                    <div class="exclusive-price">$${item.price}</div>
+                    <button class="exclusive-btn" onclick="vault.requestExclusive('${item.title}')">
+                        REQUEST ACCESS
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    requestExclusive(itemName) {
+        this.addTerminalLine(`EXCLUSIVE REQUEST: ${itemName}`);
+        this.addTerminalLine('REQUEST SUBMITTED TO NEURAL COMMAND');
+        this.showNotification('Exclusive item request submitted. You will be contacted via encrypted channels.');
+    }
+
+    copyCode(code) {
+        navigator.clipboard.writeText(code).then(() => {
+            this.showNotification(`Code ${code} copied to clipboard`);
+            this.addTerminalLine(`CODE ACCESSED: ${code}`);
+        });
+    }
+
+    downloadFile(filename) {
+        this.addTerminalLine(`DECRYPTING: ${filename}`);
+        this.addTerminalLine('DOWNLOAD INITIATED');
+        
+        // Create a fake download
+        const link = document.createElement('a');
+        link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(`SEPHYX CLASSIFIED FILE: ${filename}\n\nThis file contains encrypted SEPHYX technology data.\nAccess Level: VAULT MEMBER ONLY\n\n[ENCRYPTED DATA FOLLOWS]\n$#%@!*&^%$#@!*&^%$#@!*&^%$#@`);
+        link.download = filename;
+        link.click();
+        
+        this.showNotification(`${filename} downloaded and decrypted`);
+    }
+
+    startTerminalOutput() {
+        setInterval(() => {
+            if (this.terminalIndex < this.terminalLines.length) {
+                this.addTerminalLine(this.terminalLines[this.terminalIndex]);
+                this.terminalIndex++;
+            } else {
+                // Reset and start over
+                this.terminalIndex = 0;
+                const terminalBody = document.getElementById('terminal-body');
+                const lines = terminalBody.querySelectorAll('.terminal-line:not(.typing)');
+                if (lines.length > 10) {
+                    lines[0].remove();
+                }
+            }
+        }, 5000);
+    }
+
+    addTerminalLine(text) {
+        const terminalBody = document.getElementById('terminal-body');
+        const typingLine = document.getElementById('typing-line');
+        
+        const newLine = document.createElement('div');
+        newLine.className = 'terminal-line';
+        newLine.textContent = text;
+        
+        terminalBody.insertBefore(newLine, typingLine);
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-green);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            z-index: 3000;
+            animation: slideIn 0.3s ease;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    document.body.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+
+    setupEventListeners() {
+        document.querySelectorAll('.vault-nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const section = btn.dataset.section;
+                this.showSection(section);
+            });
+        });
+    }
+}
+
+// Initialize vault
+const vault = new SephyxVault();
+window.vault = vault;
+
+// Add slide-in animation CSS
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+`;
+document.head.appendChild(style);
+</script>
